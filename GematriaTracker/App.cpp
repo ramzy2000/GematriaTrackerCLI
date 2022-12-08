@@ -2,6 +2,7 @@
 
 App::App()
 {
+	App::printAppCommands();
 	std::string command = "";
 	while (isConsoleLoop)
 	{
@@ -14,24 +15,19 @@ App::App()
 	}
 }
 
-void printAppCommands()
+App::~App()
 {
-	std::cout << "Welcome to Gematria Calculator" << '\n';
+
 }
 
-void App::test01()
+void App::printAppCommands()
 {
-	while (true)
-	{
-		std::string argument = "";
-		std::cout << "Enter string: ";
-		std::getline(std::cin, argument);
-		if (argument == "!exit")
-		{
-			break;
-		}
-		std::cout << "Result: " << getNumberFromString(argument) << '\n';
-	}
+	std::cout << "Welcome to Gematria Calculator" << '\n';
+	std::cout << "help - print all commands" << '\n';
+	std::cout << "calc - calculate new words" << '\n';
+	std::cout << "clear - clear the screen" << '\n';
+	std::cout << "exit - close the program" << '\n';
+	std::cout << '\n';
 }
 
 void App::processCommand(const std::string_view command)
@@ -49,6 +45,10 @@ void App::processCommand(const std::string_view command)
 	else if (input == "CALC")
 	{
 		GematriaTracker gematriaTracker;
+	}
+	else if (input == "HELP")
+	{
+		App::printAppCommands();
 	}
 	else
 	{
