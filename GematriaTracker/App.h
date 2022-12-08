@@ -34,6 +34,8 @@ public:
 	/// <param name="command"></param>
 	void processCommand(const std::string_view command);
 
+	bool isFirstRun();
+
 	App();
 
 	~App();

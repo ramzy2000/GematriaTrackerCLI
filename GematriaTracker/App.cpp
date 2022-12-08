@@ -2,6 +2,13 @@
 
 App::App()
 {
+	if (!isFirstRun())
+	{
+		std::cout << "First time running ..." << '\n';
+		// generate the data folder
+		std::filesystem::create_directories("data");
+	}
+
 	App::printAppCommands();
 	std::string command = "";
 	while (isConsoleLoop)
@@ -18,6 +25,11 @@ App::App()
 App::~App()
 {
 
+}
+
+bool App::isFirstRun()
+{
+	return std::filesystem::exists("data");
 }
 
 void App::printAppCommands()
