@@ -23,6 +23,7 @@
 
 #include <iostream>
 #include <string>
+#include <filesystem>
 #include "Utils.h"
 
 class GematriaTracker

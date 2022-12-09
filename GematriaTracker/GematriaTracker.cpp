@@ -29,7 +29,25 @@ GematriaTracker::GematriaTracker()
 
 		if (!isCommand)
 		{
-			std::cout << "Result: " << getNumberFromString(argument) << '\n';
+			int aggString = getNumberFromString(argument);
+
+			// convert the number into string and append
+			// .txt to it.
+			std::string fileName = std::to_string(aggString);
+			fileName += ".txt";
+
+			// check if the file exists
+			if (std::filesystem::exists(fileName))
+			{
+				// check if the string is already in the file
+				// if its not then append it to the file
+			}
+			else
+			{
+				// generate the file and append the string to it.
+			}
+
+			std::cout << "Result: " << aggString << '\n';
 		}
 	}
 }

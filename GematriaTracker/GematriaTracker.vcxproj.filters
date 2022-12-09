@@ -27,6 +27,12 @@
     <ClCompile Include="GematriaTracker.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="EnglishDictionary.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WordReader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utils.h">
@@ -38,5 +44,14 @@
     <ClInclude Include="GematriaTracker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="WordReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EnglishDictionary.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="englishdictionary.txt" />
   </ItemGroup>
 </Project>
