@@ -24,15 +24,19 @@
 #include <iostream>
 #include <string>
 #include <filesystem>
+#include "ClearScreen.h"
+#include "BasicConsole.h"
 #include "Utils.h"
 #include "WordReader.h"
 
-class GematriaTracker
+class GematriaTracker : public BasicConsole
 {
 public:
 	GematriaTracker();
 
-	void printCommands() const;
+	void printCommands() override;
+
+	void processCommand(const std::string command) override;
 };
 
 #endif // GEMATRIA_TRACKER_H

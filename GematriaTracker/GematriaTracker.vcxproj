@@ -132,7 +132,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="ClearScreen.cpp" />
     <ClCompile Include="EnglishDictionary.cpp" />
+    <ClCompile Include="GematriaFileScanner.cpp" />
     <ClCompile Include="GematriaTracker.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Utils.cpp" />
@@ -140,7 +142,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
+    <ClInclude Include="BasicConsole.h" />
+    <ClInclude Include="BuildConfig.h" />
+    <ClInclude Include="ClearScreen.h" />
     <ClInclude Include="EnglishDictionary.h" />
+    <ClInclude Include="GematriaFileScanner.h" />
     <ClInclude Include="GematriaTracker.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="WordReader.h" />

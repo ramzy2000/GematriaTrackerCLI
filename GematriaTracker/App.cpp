@@ -9,13 +9,13 @@ App::App()
 		std::filesystem::create_directories("data");
 	}
 
-	App::printAppCommands();
+	App::printCommands();
 	std::string command = "";
 	while (isConsoleLoop)
 	{
 		command = ""; // clear the command buffer
 		// promt the user for a command
-		std::cout << "prompt>";
+		std::cout << "home>";
 		std::getline(std::cin, command);
 
 		this->processCommand(command);
@@ -32,17 +32,18 @@ bool App::isFirstRun()
 	return std::filesystem::exists("data");
 }
 
-void App::printAppCommands()
+void App::printCommands()
 {
 	std::cout << "Welcome to Gematria Calculator" << '\n';
 	std::cout << "help - print all commands" << '\n';
 	std::cout << "calc - calculate new words" << '\n';
+	std::cout << "scanner - scan text files to generate numbers" << '\n';
 	std::cout << "clear - clear the screen" << '\n';
 	std::cout << "exit - close the program" << '\n';
 	std::cout << '\n';
 }
 
-void App::processCommand(const std::string_view command)
+void App::processCommand(const std::string command)
 {
 	// convert string into caps
 	std::string input = toUppercase(command);
@@ -52,18 +53,23 @@ void App::processCommand(const std::string_view command)
 	}
 	else if (input == "CLEAR")
 	{
-		system("cls");
+		ClearScreen();
 	}
 	else if (input == "CALC")
 	{
 		GematriaTracker gematriaTracker;
 	}
+	else if (input == "SCANNER")
+	{
+		GematriaFileScanner gematriaScanner;
+	}
 	else if (input == "HELP")
 	{
-		App::printAppCommands();
+		App::printCommands();
 	}
 	else
 	{
 		std::cout << "'" << command << "'" << " not found" << '\n';
+		std::cout << "type 'help' to get help with commands" << '\n';
 	}
 }

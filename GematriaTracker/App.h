@@ -6,33 +6,31 @@
 #include <string_view>
 #include <filesystem>
 #include <fstream>
+#include "ClearScreen.h"
+#include "BasicConsole.h"
 #include "Utils.h"
 #include "GematriaTracker.h"
+#include "GematriaFileScanner.h"
 
 /// <summary>
 /// Add a first time run feature that will create the files when 
 /// first time run
 /// </summary>
 
-class App
+class App : BasicConsole
 {
 public:
-	/// <summary>
-	/// Determines if the app loop is to terminate
-	/// </summary>
-	bool isConsoleLoop = true;
-
 	/// <summary>
 	/// Print out the commands that are used
 	/// in the application layer.
 	/// </summary>
-	void printAppCommands();
+	void printCommands() override;
 
 	/// <summary>
 	/// Process the application layer commands
 	/// </summary>
 	/// <param name="command"></param>
-	void processCommand(const std::string_view command);
+	void processCommand(const std::string command) override;
 
 	bool isFirstRun();
 
