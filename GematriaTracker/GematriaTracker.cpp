@@ -27,13 +27,14 @@ GematriaTracker::GematriaTracker()
 			isCommand = false;
 		}
 
-		if (!isCommand)
+		if (!isCommand && argument != "")
 		{
 			int aggString = getNumberFromString(argument);
 
 			// convert the number into string and append
 			// .txt to it.
-			std::string fileName = std::to_string(aggString);
+			std::string fileName = "data/";
+			fileName += std::to_string(aggString);
 			fileName += ".txt";
 
 			// check if the file exists
@@ -41,10 +42,25 @@ GematriaTracker::GematriaTracker()
 			{
 				// check if the string is already in the file
 				// if its not then append it to the file
+
+				WordReader wordReader(fileName);
+				if (!wordReader.wordExists(argument))
+				{
+					wordReader.appendWord(argument);
+					std::cout << "Word Added" << '\n';
+				}
 			}
 			else
 			{
 				// generate the file and append the string to it.
+				std::fstream file;
+				file.open(fileName, std::ios::out);
+				file.close();
+
+				WordReader wordReader(fileName);
+				wordReader.appendWord(argument);
+				std::cout << "Word Added" << '\n';
+				std::cout << "Generated New File" << '\n';
 			}
 
 			std::cout << "Result: " << aggString << '\n';

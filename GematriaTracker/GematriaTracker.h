@@ -25,6 +25,7 @@
 #include <string>
 #include <filesystem>
 #include "Utils.h"
+#include "WordReader.h"
 
 class GematriaTracker
 {

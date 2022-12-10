@@ -14,6 +14,9 @@ public:
 	WordReader(std::string filePath);
 
 	bool wordExists(std::string word);
+
+	// append a word to the file
+	void appendWord(std::string_view word);
 };
 
 #endif //WORD_READER

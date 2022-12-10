@@ -2,5 +2,5 @@
 
 EnglishDictionary::EnglishDictionary()
 {
-	this->filePath = "englishDictionary.txt";
+	this->filePath = "englishdictionary.txt";
 }

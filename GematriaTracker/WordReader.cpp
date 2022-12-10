@@ -11,7 +11,7 @@ bool WordReader::wordExists(std::string word)
 {
 	word = toUppercase(word);
 	std::ifstream file;
-	file.open("englishdictionary.txt");
+	file.open(filePath);
 
 	std::string line = "";
 	while (!file.eof())
@@ -28,4 +28,18 @@ bool WordReader::wordExists(std::string word)
 
 	file.close();
 	return false;
+}
+
+// append a word to the file
+void WordReader::appendWord(std::string_view word)
+{
+	std::fstream file;
+	file.open(filePath, std::ios::app); // open the file
+	if (file.fail()) {
+		file.close();
+		throw "Error WordReader::appendWord() failed to open file";
+	}
+
+	file << word << '\n';
+	file.close();
 }
