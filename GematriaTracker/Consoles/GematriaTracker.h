@@ -24,10 +24,9 @@
 #include <iostream>
 #include <string>
 #include <filesystem>
-#include "ClearScreen.h"
+#include "../Utilities/ClearScreen.h"
 #include "BasicConsole.h"
-#include "Utils.h"
-#include "WordReader.h"
+#include "../Utilities/WordReader.h"
 
 class GematriaTracker : public BasicConsole
 {

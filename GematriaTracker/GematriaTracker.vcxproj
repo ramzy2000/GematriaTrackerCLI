@@ -131,28 +131,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="App.cpp" />
-    <ClCompile Include="ClearScreen.cpp" />
-    <ClCompile Include="EnglishDictionary.cpp" />
-    <ClCompile Include="GematriaFileScanner.cpp" />
-    <ClCompile Include="GematriaTracker.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Utils.cpp" />
-    <ClCompile Include="WordReader.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="App.h" />
-    <ClInclude Include="BasicConsole.h" />
-    <ClInclude Include="BuildConfig.h" />
-    <ClInclude Include="ClearScreen.h" />
-    <ClInclude Include="EnglishDictionary.h" />
-    <ClInclude Include="GematriaFileScanner.h" />
-    <ClInclude Include="GematriaTracker.h" />
-    <ClInclude Include="Utils.h" />
-    <ClInclude Include="WordReader.h" />
-  </ItemGroup>
-  <ItemGroup>
     <Text Include="englishdictionary.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Consoles\App.cpp" />
+    <ClCompile Include="Consoles\GematriaFileScanner.cpp" />
+    <ClCompile Include="Consoles\GematriaTracker.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Utilities\ClearScreen.cpp" />
+    <ClCompile Include="Utilities\EnglishDictionary.cpp" />
+    <ClCompile Include="Utilities\Utils.cpp" />
+    <ClCompile Include="Utilities\WordReader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Consoles\App.h" />
+    <ClInclude Include="Consoles\BasicConsole.h" />
+    <ClInclude Include="Consoles\GematriaFileScanner.h" />
+    <ClInclude Include="Consoles\GematriaTracker.h" />
+    <ClInclude Include="System\BuildConfig.h" />
+    <ClInclude Include="Utilities\ClearScreen.h" />
+    <ClInclude Include="Utilities\EnglishDictionary.h" />
+    <ClInclude Include="Utilities\Utils.h" />
+    <ClInclude Include="Utilities\WordReader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

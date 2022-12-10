@@ -3,8 +3,8 @@
 
 #include <iostream>
 #include <string>
-#include "ClearScreen.h"
-#include "Utils.h"
+#include "../Utilities/ClearScreen.h"
+#include "../Utilities/Utils.h"
 #include "BasicConsole.h"
 
 class GematriaFileScanner : public BasicConsole

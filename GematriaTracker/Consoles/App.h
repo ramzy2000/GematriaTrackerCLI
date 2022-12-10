@@ -6,9 +6,9 @@
 #include <string_view>
 #include <filesystem>
 #include <fstream>
-#include "ClearScreen.h"
+#include "../Utilities/ClearScreen.h"
 #include "BasicConsole.h"
-#include "Utils.h"
+#include "../Utilities/Utils.h"
 #include "GematriaTracker.h"
 #include "GematriaFileScanner.h"
 
