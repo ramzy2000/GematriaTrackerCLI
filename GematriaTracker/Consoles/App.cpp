@@ -7,6 +7,7 @@ App::App()
 		std::cout << "First time running ..." << '\n';
 		// generate the data folder
 		std::filesystem::create_directories("data");
+		std::filesystem::create_directories("scanner_data");
 	}
 
 	App::printCommands();
@@ -29,7 +30,15 @@ App::~App()
 
 bool App::isFirstRun()
 {
-	return std::filesystem::exists("data");
+	if (std::filesystem::exists("scanner_data") 
+		&& std::filesystem::exists("data"))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 void App::printCommands()

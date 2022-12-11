@@ -8,9 +8,6 @@
     <Filter Include="Source">
       <UniqueIdentifier>{c4a3a6cc-9a51-427b-b512-e48c6af14cf0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header">
-      <UniqueIdentifier>{7d5ff7b0-9ec0-47a6-a245-5fda4202d042}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Consoles">
       <UniqueIdentifier>{2724b3d5-b6c3-417f-a1eb-f07106ec9596}</UniqueIdentifier>
     </Filter>
