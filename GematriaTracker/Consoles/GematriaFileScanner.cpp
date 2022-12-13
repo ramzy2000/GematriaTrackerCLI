@@ -97,6 +97,7 @@ void GematriaFileScanner::processCommand(const std::string command)
 	else if (input == "GENERATE")
 	{
 		std::string input = "";
+		bool isCommand = true;
 		while (true)
 		{
 			input = ""; // clear the command buffer
@@ -104,7 +105,7 @@ void GematriaFileScanner::processCommand(const std::string command)
 			std::cout << "Enter Folder Name: ";
 			std::getline(std::cin, input);
 
-			bool isCommand = true;
+			isCommand = true;
 
 			if (input == "!exit")
 			{
@@ -132,59 +133,64 @@ void GematriaFileScanner::processCommand(const std::string command)
 						// create the data folder
 
 						std::filesystem::create_directories(dataFolder);
+						std::cout << "Processing Report ..." << '\n';
 
 						// read the file and process each
 						// word into a number and then create a file in the data
 						// folder named after 
-						std::fstream file;
-						file.open(fileBeingScanned, std::ios::in);
-
-						while (!file.eof())
+						if (std::filesystem::exists(fileBeingScanned))
 						{
-							std::string line;
-							std::getline(file, line);
-							if (line == "")
+							std::fstream file;
+							file.open(fileBeingScanned, std::ios::in);
+
+							while (!file.eof())
 							{
-								break;
-							}
-
-							std::string& word = line;
-
-							// get the line form the number
-							int number = getNumberFromString(line);
-
-							// check if a file with the number name exits
-							std::string fileWithNumberName = std::to_string(number) + ".txt";
-							std::string path = dataFolder + "/" + fileWithNumberName;
-							if (std::filesystem::exists(path))
-							{
-								// check if the file contains the word
-								WordReader wordReader(path);
-								if (!wordReader.wordExists(word))
+								std::string line;
+								std::getline(file, line);
+								if (line == "")
 								{
-									// append the word to the file
+									break;
+								}
+
+								std::string& word = line;
+
+								// get the line form the number
+								int number = getNumberFromString(line);
+
+								// check if a file with the number name exits
+								std::string fileWithNumberName = std::to_string(number) + ".txt";
+								std::string path = dataFolder + "/" + fileWithNumberName;
+								if (std::filesystem::exists(path))
+								{
+									// check if the file contains the word
+									WordReader wordReader(path);
+									if (!wordReader.wordExists(word))
+									{
+										// append the word to the file
+										std::fstream file;
+										file.open(path, std::ios::app);
+										file << word << '\n';
+										file.close();
+									}
+								}
+								else
+								{
+									// create a new file
 									std::fstream file;
+									file.open(path, std::ios::out);
+									file.close();
+
+									// append the word to the file.
 									file.open(path, std::ios::app);
 									file << word << '\n';
 									file.close();
 								}
-								else
-								{
-									std::cout << "Word Already Exists" << '\n';
-								}
 							}
-							else
-							{
-								// create a new file
-								std::fstream file;
-								file.open(path, std::ios::out);
-								file.close();
-
-								// append the word to the file.
-								file.open(path, std::ios::app);
-								file << word << '\n';
-								file.close();
-							}
+						}
+						else
+						{
+							std::cout << "Make sure to put a text file named " 
+								<< mainFolder << ".txt" << " in the scanner_data/" + mainFolder << '\n';
 						}
 					}
 					else
@@ -193,6 +199,10 @@ void GematriaFileScanner::processCommand(const std::string command)
 					}
 				}
 			}
+		}
+		if (!isCommand)
+		{
+			std::cout << "Finished Generating Report" << '\n';
 		}
 	}
 	else

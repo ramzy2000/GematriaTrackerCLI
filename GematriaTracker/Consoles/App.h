@@ -11,6 +11,7 @@
 #include "../Utilities/Utils.h"
 #include "GematriaTracker.h"
 #include "GematriaFileScanner.h"
+#include "WordReverseSearch.h"
 
 /// <summary>
 /// Add a first time run feature that will create the files when 

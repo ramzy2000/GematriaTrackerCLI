@@ -20,4 +20,7 @@ std::string toUppercase(std::string_view str);
 /// <returns>Total added numbers</returns>
 int getNumberFromString(std::string str);
 
+//reverse a a string
+std::string reverseString(const std::string str);
+
 #endif // UTILS_H

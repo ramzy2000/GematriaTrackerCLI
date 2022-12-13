@@ -1,6 +1,8 @@
 #ifndef BASIC_CONSOLE
 #define BASIC_CONSOLE
 
+#include "../Utilities/ClearScreen.h"
+
 class BasicConsole
 {
 private:

@@ -52,6 +52,9 @@
     <ClCompile Include="Utilities\WordReader.cpp">
       <Filter>Utilities</Filter>
     </ClCompile>
+    <ClCompile Include="Consoles\WordReverseSearch.cpp">
+      <Filter>Consoles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="System\BuildConfig.h">
@@ -80,6 +83,9 @@
     </ClInclude>
     <ClInclude Include="Utilities\WordReader.h">
       <Filter>Utilities\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Consoles\WordReverseSearch.h">
+      <Filter>Consoles\Header</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

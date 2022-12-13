@@ -47,6 +47,7 @@ void App::printCommands()
 	std::cout << "help - print all commands" << '\n';
 	std::cout << "calc - calculate new words" << '\n';
 	std::cout << "scanner - scan text files to generate numbers" << '\n';
+	std::cout << "rev_word_search - search a word in reverse" << '\n';
 	std::cout << "clear - clear the screen" << '\n';
 	std::cout << "exit - close the program" << '\n';
 	std::cout << '\n';
@@ -71,6 +72,10 @@ void App::processCommand(const std::string command)
 	else if (input == "SCANNER")
 	{
 		GematriaFileScanner gematriaScanner;
+	}
+	else if (input == "REV_WORD_SEARCH")
+	{
+		WordReverseSearch wordReverseSearch;
 	}
 	else if (input == "HELP")
 	{

@@ -117,3 +117,13 @@ int getNumberFromString(std::string str)
 
 	return totalCount;
 }
+
+std::string reverseString(const std::string str)
+{
+	std::string res = "";
+	for (int i = str.length() - 1; i >= 0; i--)
+	{
+		res += str[i];
+	}
+	return res;
+}
