@@ -48,7 +48,7 @@ void GematriaTracker::processCommand(const std::string command)
 
 	if (!isCommand && command != "")
 	{
-		int aggStringNum = getNumberFromString(command);
+		int aggStringNum = getGematria(command);
 
 		// Set up file path based off resulting number
 		std::string fileName = "data/";

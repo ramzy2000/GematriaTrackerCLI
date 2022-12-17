@@ -18,6 +18,9 @@
 /// first time run
 /// </summary>
 
+void gematriaWordSearch();
+void gematriaNumberSearch();
+
 class App : BasicConsole
 {
 public:

@@ -155,7 +155,7 @@ void GematriaFileScanner::processCommand(const std::string command)
 								std::string& word = line;
 
 								// get the line form the number
-								int number = getNumberFromString(line);
+								int number = getGematria(line);
 
 								// check if a file with the number name exits
 								std::string fileWithNumberName = std::to_string(number) + ".txt";

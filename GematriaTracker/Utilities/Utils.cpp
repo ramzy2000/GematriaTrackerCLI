@@ -22,7 +22,7 @@ std::string toUppercase(std::string_view str)
 /// get the numbers from the string and add them together.
 /// </summary>
 /// <returns>Total added numbers</returns>
-int getNumberFromString(std::string str)
+int getGematria(std::string str)
 {
 	int totalCount = 0;
 	for (int i = 0; i < str.length(); i++)
