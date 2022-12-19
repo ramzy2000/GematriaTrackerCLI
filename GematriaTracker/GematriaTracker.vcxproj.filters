@@ -55,6 +55,12 @@
     <ClCompile Include="Consoles\WordReverseSearch.cpp">
       <Filter>Consoles</Filter>
     </ClCompile>
+    <ClCompile Include="Utilities\vectorTools.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\fileTools.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="System\BuildConfig.h">
@@ -86,6 +92,12 @@
     </ClInclude>
     <ClInclude Include="Consoles\WordReverseSearch.h">
       <Filter>Consoles\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\vectorTools.h">
+      <Filter>Utilities\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\fileTools.h">
+      <Filter>Utilities\Header</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

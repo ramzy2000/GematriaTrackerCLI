@@ -164,7 +164,7 @@ void gematriaNumberSearch()
 		while (!file.eof())
 		{
 			line = "";
-			file >> line;
+			std::getline(file, line);
 			line += '\n';
 			res += line;
 		}

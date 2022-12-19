@@ -98,111 +98,94 @@ void GematriaFileScanner::processCommand(const std::string command)
 	{
 		std::string input = "";
 		bool isCommand = true;
-		while (true)
-		{
-			input = ""; // clear the command buffer
+		input = ""; // clear the command buffer
 			// promt the user for a command
-			std::cout << "Enter Folder Name: ";
-			std::getline(std::cin, input);
+		std::cout << "Enter Folder Name: ";
+		std::getline(std::cin, input);
 
-			isCommand = true;
+		// process the command
+		std::string root = "scanner_data";
+		std::string mainFolder = root + '/' + input; // holds scanner_data/folderName
+		std::string dataFolder = mainFolder + '/' + "data"; // data folder
+		std::string fileBeingScanned = mainFolder + '/' + input + ".txt"; // file being scanned
 
-			if (input == "!exit")
+		// check if the root folder exits
+		if (std::filesystem::exists(mainFolder))
+		{
+			// make sure the data folder is not already created and it has the text file
+			if (!std::filesystem::exists(dataFolder))
 			{
-				break;
-			}
-			else
-			{
-				isCommand = false;
-			}
-
-			if (!isCommand)
-			{
-				// process the command
-				std::string root = "scanner_data";
-				std::string mainFolder = root + '/' + input; // holds scanner_data/folderName
-				std::string dataFolder = mainFolder + '/' + "data"; // data folder
-				std::string fileBeingScanned = mainFolder + '/' + input + ".txt"; // file being scanned
-
-				// check if the root folder exits
-				if (std::filesystem::exists(mainFolder))
+				// read the file and process each
+				// word into a number and then create a file in the data
+				// folder named after 
+				if (std::filesystem::exists(fileBeingScanned))
 				{
-					// make sure the data folder is not already created
-					if (!std::filesystem::exists(dataFolder))
+					// create the data folder
+					std::filesystem::create_directories(dataFolder);
+					std::cout << "Processing Report ..." << '\n';
+
+					std::fstream file;
+					file.open(fileBeingScanned, std::ios::in);
+
+					while (!file.eof())
 					{
-						// create the data folder
-
-						std::filesystem::create_directories(dataFolder);
-						std::cout << "Processing Report ..." << '\n';
-
-						// read the file and process each
-						// word into a number and then create a file in the data
-						// folder named after 
-						if (std::filesystem::exists(fileBeingScanned))
+						std::string line;
+						std::getline(file, line);
+						if (line == "")
 						{
-							std::fstream file;
-							file.open(fileBeingScanned, std::ios::in);
+							break;
+						}
 
-							while (!file.eof())
+						std::string& word = line;
+
+						// get the line form the number
+						int number = getGematria(line);
+
+						// check if a file with the number name exits
+						std::string fileWithNumberName = std::to_string(number) + ".txt";
+						std::string path = dataFolder + "/" + fileWithNumberName;
+						if (std::filesystem::exists(path))
+						{
+							// check if the file contains the word
+							WordReader wordReader(path);
+							if (!wordReader.wordExists(word))
 							{
-								std::string line;
-								std::getline(file, line);
-								if (line == "")
-								{
-									break;
-								}
-
-								std::string& word = line;
-
-								// get the line form the number
-								int number = getGematria(line);
-
-								// check if a file with the number name exits
-								std::string fileWithNumberName = std::to_string(number) + ".txt";
-								std::string path = dataFolder + "/" + fileWithNumberName;
-								if (std::filesystem::exists(path))
-								{
-									// check if the file contains the word
-									WordReader wordReader(path);
-									if (!wordReader.wordExists(word))
-									{
-										// append the word to the file
-										std::fstream file;
-										file.open(path, std::ios::app);
-										file << word << '\n';
-										file.close();
-									}
-								}
-								else
-								{
-									// create a new file
-									std::fstream file;
-									file.open(path, std::ios::out);
-									file.close();
-
-									// append the word to the file.
-									file.open(path, std::ios::app);
-									file << word << '\n';
-									file.close();
-								}
+								// append the word to the file
+								std::fstream file;
+								file.open(path, std::ios::app);
+								file << word << '\n';
+								file.close();
 							}
 						}
 						else
 						{
-							std::cout << "Make sure to put a text file named " 
-								<< mainFolder << ".txt" << " in the scanner_data/" + mainFolder << '\n';
+							// create a new file
+							std::fstream file;
+							file.open(path, std::ios::out);
+							file.close();
+
+							// append the word to the file.
+							file.open(path, std::ios::app);
+							file << word << '\n';
+							file.close();
 						}
 					}
-					else
-					{
-						std::cout << "data folder already generated" << '\n';
-					}
+					std::cout << "Finished Generating Report" << '\n';
+				}
+				else
+				{
+					std::cout << "Make sure to put a text file named "
+						<< mainFolder << ".txt" << " in the scanner_data/" + mainFolder << '\n';
 				}
 			}
+			else
+			{
+				std::cout << "data folder already generated" << '\n';
+			}
 		}
-		if (!isCommand)
+		else
 		{
-			std::cout << "Finished Generating Report" << '\n';
+			std::cout << "Failed to find report folder" << '\n';
 		}
 	}
 	else
